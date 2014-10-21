@@ -105,6 +105,8 @@ public class CalculatorActivity extends Activity {
             state.toString(getString(R.string.onEmptyState),
                     err -> err.cata(getString(R.string.onSyntaxError), getString(R.string.onMathError))));
     sumsString.subscribeOn(AndroidSchedulers.mainThread()).subscribe(s -> expressionText.setText(s));
+
+    expressionText.setText(getString(R.string.onEmptyState));
   }
 
   public static Observable<Unit> clicks(View view) {
