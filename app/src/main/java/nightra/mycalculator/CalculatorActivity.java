@@ -1,13 +1,9 @@
 package nightra.mycalculator;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import fj.F;
 import fj.Unit;
@@ -21,7 +17,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import static fj.Unit.unit;
 import static nightra.mycalculator.states.Transitions.*;
 
-public class CalculatorActivity extends ActionBarActivity {
+public class CalculatorActivity extends Activity {
 
   TextView expressionText;
   Button button0;
@@ -76,15 +72,6 @@ public class CalculatorActivity extends ActionBarActivity {
     sinButton = (Button) findViewById(R.id.sinButton);
     cosButton = (Button) findViewById(R.id.cosButton);
 
-    Button buttons[] = {button0, button1, button2, button3, button4, button5, button6, button7, button8, button9,
-            dotButton, leftParenButton, rightParenButton, clearButton, evalButton,
-            plusButton, minusButton, multiplyButton, divisionButton,
-            sqrtButton, sinButton, cosButton};
-    for (int i = 0; i < buttons.length; i++) {
-      if (buttons[i] == null)
-        System.out.println("Button number " + i + " is null");
-    }
-
     Observable<F<State, State>> b0Clicks = clicksConst(button0, handleDigit(0));
     Observable<F<State, State>> b1Clicks = clicksConst(button1, handleDigit(1));
     Observable<F<State, State>> b2Clicks = clicksConst(button2, handleDigit(2));
@@ -118,7 +105,6 @@ public class CalculatorActivity extends ActionBarActivity {
             state.toString(getString(R.string.onEmptyState),
                     err -> err.cata(getString(R.string.onSyntaxError), getString(R.string.onMathError))));
     sumsString.subscribeOn(AndroidSchedulers.mainThread()).subscribe(s -> expressionText.setText(s));
-    // button1.setOnClickListener(v -> expressionText.setText(expressionText.getText().toString() + "1")); // expressionText.modify(_ + "1")
   }
 
   public static Observable<Unit> clicks(View view) {
