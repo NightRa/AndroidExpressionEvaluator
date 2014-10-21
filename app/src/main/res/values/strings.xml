@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MyCalculator</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="onEmptyState">Enter a calculation</string>
+    <string name="onSyntaxError">Syntax Error</string>
+    <string name="onMathError">Math Error</string>
+</resources>

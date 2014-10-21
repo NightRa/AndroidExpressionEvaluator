@@ -1,0 +1,5 @@
+include ':app'
+include 'app/src'
+rootProject.children.find { it.name == 'app/src' }.name = 'src'
+
+
