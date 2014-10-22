@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="nightra.mycalculator" >
+    package="nightra.mycalculator"
+    android:installLocation="preferExternal" >
 
     <application
         android:allowBackup="true"
